@@ -38,8 +38,18 @@
 
             <div class="form-input">
                 <label for="gender" class="form-label">Giới tính</label>
-                <input type="radio" name="gender" id="gender" value="male">Nam</input>
-                <input type="radio" name="gender" id="gender" value="female">Nữ</input>
+                <div>
+                    <input type="radio" name="gender" value="male">
+                    Nam
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="female">
+                    Nữ
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="other">
+                    Khác
+                </div>
                 <span class="form-message"></span>
             </div>
 
@@ -58,6 +68,7 @@
                 Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
                 Validator.isRequired('#email'),
                 Validator.isEmail('#email', 'Email không đúng định dạng'),
+                Validator.isRequired('input[name="gender"]'),
                 Validator.minLength('#password', 6),
                 Validator.isRequired('#confirm-password'),
                 Validator.match('#confirm-password', 'Mật khẩu nhập lại không khớp', function () {
