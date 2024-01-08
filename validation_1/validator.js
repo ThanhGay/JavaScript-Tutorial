@@ -22,16 +22,20 @@ function Validator(options) {
 
         // Lặp qua các rule & kiểm tra
         // Nếu có lỗi thì dừng lại và báo lỗi
-        for (let rule of rules) {
+        for (let i = 0; i < rules.length; ++i) {
             switch (inputElement.type) {
-                case 'checkbox':
                 case 'radio':
-                    errorMessage = rule(
-                        formElement.querySelectorAll(rule.selector + ':checked')
+                    errorMessage = rules[i](
+                        formElement.querySelector(rule.selector + ':checked')
+                    );
+                    break;
+                case 'checkbox':
+                    errorMessage = rules[i](
+                        formElement.querySelector(rule.selector + ':checked')
                     );
                     break;
                 default:
-                    errorMessage = rule(inputElement.value);
+                    errorMessage = rules[i](inputElement.value);
             }
             if (errorMessage) break;
         }
@@ -72,7 +76,7 @@ function Validator(options) {
                         function (values, input) {
                             switch (input.type) {
                                 case 'radio':
-                                        values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                                    values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
                                     break;
 
                                 case 'checkbox':
