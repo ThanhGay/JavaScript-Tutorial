@@ -81,17 +81,17 @@
             formGroupSelector: '.form-input',
             errorSelector: '.form-message',
             rules: [
-                // Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                // Validator.isRequired('#email'),
-                // Validator.isEmail('#email', 'Email không đúng định dạng'),
-                // Validator.minLength('#password', 6),
-                // Validator.isRequired('#confirm-password'),
-                // Validator.isRequired('#province', 'Vui lòng chọn tỉnh / thành phố'),
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email', 'Email không đúng định dạng'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#confirm-password'),
+                Validator.isRequired('#province', 'Vui lòng chọn tỉnh / thành phố'),
                 Validator.isRequired('input[name="gender"]'),
-                // Validator.isRequired('#avatar', 'Hãy chọn 1 file làm ảnh đại diện'),
-                // Validator.match('#confirm-password', 'Mật khẩu nhập lại không khớp', function () {
-                //     return document.querySelector('#form-1 #password').value;
-                // }),
+                Validator.isRequired('#avatar', 'Hãy chọn 1 file làm ảnh đại diện'),
+                Validator.match('#confirm-password', 'Mật khẩu nhập lại không khớp', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }),
             ],
             onsubmit: function (data) {
                 // Call API
