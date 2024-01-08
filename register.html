@@ -4,14 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="styleSheet" href="./index.css">
     
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <div class="container">
 
         <form action="" method="post" id="form-1">
-            <h3 class="heading">Thành viên đăng ký</h3>
-            <p class="head">Cùng nhau học tập miễn phí tại H8</p>
+            <h3 class="heading">Đăng ký</h3>
+            <p class="head">Cùng nhau học tập miễn phí tại F8</p>
 
             <div class="spacer"></div>
 
@@ -76,30 +76,28 @@
     </div>
     <script src="./validator.js"></script>
     <script>
-
         Validator({
             form: '#form-1',
             formGroupSelector: '.form-input',
             errorSelector: '.form-message',
             rules: [
-                // Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                // Validator.isRequired('#email'),
-                // Validator.isEmail('#email', 'Email không đúng định dạng'),
-                // Validator.minLength('#password', 6),
-                // Validator.isRequired('#confirm-password'),
-                // Validator.isRequired('#province', 'Vui lòng chọn tỉnh / thành phố'),
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email', 'Email không đúng định dạng'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#confirm-password'),
+                Validator.isRequired('#province', 'Vui lòng chọn tỉnh / thành phố'),
                 Validator.isRequired('input[name="gender"]'),
-                // Validator.isRequired('#avatar', 'Hãy chọn 1 file làm ảnh đại diện'),
-                // Validator.match('#confirm-password', 'Mật khẩu nhập lại không khớp', function () {
-                    // return document.querySelector('#form-1 #password').value;
-                // }),
+                Validator.isRequired('#avatar', 'Hãy chọn 1 file làm ảnh đại diện'),
+                Validator.match('#confirm-password', 'Mật khẩu nhập lại không khớp', function () {
+                    return document.querySelector('#form-1 #password').value;
+                }),
             ],
             onsubmit: function (data) {
                 // Call API
                 console.log(data);
             },
         });
-
     </script>
 </body>
 </html>
