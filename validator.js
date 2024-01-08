@@ -27,7 +27,7 @@ function Validator(options) {
                 case 'checkbox':
                 case 'radio':
                     errorMessage = rule(
-                        formElement.querySelector(rule.selector + ':checked')
+                        formElement.querySelectorAll(rule.selector + ':checked')
                     );
                     break;
                 default:
@@ -68,10 +68,36 @@ function Validator(options) {
                 // Trường hợp submit với JavaScript
                 if (typeof options.onsubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]');
-                    var formValues = Array.from(enableInputs).reduce(function (values, input) {
-                        values[input.name] = input.value;
-                        return values;
-                    }, {});
+                    var formValues = Array.from(enableInputs).reduce(
+                        function (values, input) {
+                            switch (input.type) {
+                                case 'radio':
+                                        values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                                    break;
+
+                                case 'checkbox':
+                                    if (!input.matches(':checked')) {
+                                        values[input.name] = '';
+                                        return values;
+                                    }
+                                    if (!Array.isArray(values[input.name])) {
+                                        values[input.name] = [];
+                                    }
+                                    values[input.name].push(input.value);
+                                    break;
+
+                                case 'file':
+                                    values[input.name] = input.files;
+                                    break;
+
+                                default:
+                                    values[input.name] = input.value;
+                                    break;
+                            }
+                            return values;
+                        },
+                        {}
+                    );
                     options.onsubmit(formValues);
                 }
                 // Trường hợp submit với hành vi mặc định

@@ -61,7 +61,7 @@ form {
     font-size: 1.4rem;
 }
 
-input {
+.form-control {
     height: 40px;
     padding: 8px 12px;
     border: 1px solid #b3b3b3;
@@ -69,7 +69,7 @@ input {
     font-size: 1.4rem;
 }
 
-input:hover {
+.form-control:hover {
     border-color: #1dbfaf;
 }
 
@@ -77,7 +77,7 @@ input:hover {
     color: #f33a58;
 }
 
-.form-input.invalid input {
+.form-input.invalid .form-control {
     border-color: #f33a58;
 }
 
@@ -89,6 +89,10 @@ input:hover {
 
 .spacer {
     margin-top: 36px;
+}
+
+select {
+    height: 40px;
 }
 
 button {
