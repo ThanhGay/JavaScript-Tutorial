@@ -81,7 +81,7 @@ function Validator(options) {
 
                                 case 'checkbox':
                                     if (!input.matches(':checked')) {
-                                        values[input.name] = '';
+                                        values[input.name] = '';        // comment this row, everything is oke. But when you don't requied these checkbox, you can't receive 'gender attribute' in console.log(data)
                                         return values;
                                     }
                                     if (!Array.isArray(values[input.name])) {
