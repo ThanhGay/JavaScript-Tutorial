@@ -25,10 +25,6 @@ function Validator(options) {
         for (let i = 0; i < rules.length; ++i) {
             switch (inputElement.type) {
                 case 'radio':
-                    errorMessage = rules[i](
-                        formElement.querySelector(rule.selector + ':checked')
-                    );
-                    break;
                 case 'checkbox':
                     errorMessage = rules[i](
                         formElement.querySelector(rule.selector + ':checked')
